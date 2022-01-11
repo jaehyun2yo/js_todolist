@@ -9,14 +9,14 @@ let toDos = [];
 function saveToDos() {
     localStorage.setItem(TODOS_KEY, JSON.stringify(toDos));
 }
-
+//삭제
 function deleteToDo(e) {
     const li = e.target.parentElement;
     li.remove();
     toDos = toDos.filter((toDo) => toDo.id !== parseInt(li.id) );
     saveToDos();
 }
-
+// todolist 그리기
 function paintToDo(newTodo) {
     const li = document.createElement("li");
     li.id = newTodo.id;
@@ -30,22 +30,24 @@ function paintToDo(newTodo) {
     toDoList.appendChild(li);
 
 }
-
+// submit 핸들러 
 function handleToDoSubmit(e) {
     e.preventDefault();
     const newTodo = toDoInput.value;
     toDoInput.value = "";
+    // 새로운 todo 오브젝트 생성
     const newTodoObj = {
-        id: Date.now(),
-        text: newTodo,
-    }
-    toDos.push(newTodoObj);
+    id: Date.now(),
+    text: newTodo,
+}
+toDos.push(newTodoObj);
     paintToDo(newTodoObj);
     saveToDos()
     
 }
 
 toDoForm.addEventListener("submit", handleToDoSubmit);
+
 
 const savedToDos = localStorage.getItem(TODOS_KEY);
 if( savedToDos !== null ){
