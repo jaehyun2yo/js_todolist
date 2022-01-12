@@ -12,3 +12,18 @@ img {
     z-index: -1;
     opacity:80%;
     }
+.clock-contain {
+    width: 100%;
+    height: 200px;
+}
+
+.clock-contain #clock {
+    text-align: center;
+    margin-top: 100px;
+    margin-bottom: 0px;
+    font-size: 80px;
+}
+
+#greeting {
+    text-align: center;
+}
